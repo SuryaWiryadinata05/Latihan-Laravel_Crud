@@ -32,3 +32,7 @@ Route::resource('siswa', SiswaController::class);
 Route::resource('jurusan', JurusanController::class);
 
 Route::resource('nilai', NilaiController::class);
+
+Route::get('/test-admin' , function(){
+    return view('layouts.admin');
+});
