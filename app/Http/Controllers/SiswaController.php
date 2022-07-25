@@ -19,8 +19,8 @@ class SiswaController extends Controller
 
     public function index()
     {
-        $a = Siswa::all();
-        return view('siswa.index' , ['siswa' => $a]);
+        $siswa = Siswa::all();
+        return view('siswa.index' , ['siswa' => $siswa]);
     }
 
     /**
@@ -43,16 +43,20 @@ class SiswaController extends Controller
     {
         $validated = $request->validate([
             'nis' => 'required',
-            'nama_siswa' => 'required',
-            'alamat_siswa' => 'required',
-            'tanggal_lahir' => 'required',
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required',
         ]);
 
         $siswa = new Siswa();
         $siswa->nis = $request->nis;
-        $siswa->nama_siswa = $request->nama_siswa;
-        $siswa->alamat_siswa = $request->alamat_siswa;
-        $siswa->tanggal_lahir = $request->tanggal_lahir;
+        $siswa->nama = $request->nama;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->agama = $request->agama;
+        $siswa->alamat = $request->alamat;
+        $siswa->tgl_lahir = $request->tgl_lahir;
         $siswa->save();
         return redirect()->route('siswa.index')->with('success',
         'Data berhasil dibuat!');
@@ -96,16 +100,20 @@ class SiswaController extends Controller
         //
         $validated = $request->validate([
             'nis' => 'required',
-            'nama_siswa' => 'required',
-            'alamat_siswa' => 'required',
-            'tanggal_lahir' => 'required',
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required',
         ]);
 
         $siswa = Siswa::findorFail($id);
         $siswa->nis = $request->nis;
-        $siswa->nama_siswa = $request->nama_siswa;
-        $siswa->alamat_siswa = $request->alamat_siswa;
-        $siswa->tanggal_lahir = $request->tanggal_lahir;
+        $siswa->nama = $request->nama;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->agama = $request->agama;
+        $siswa->alamat = $request->alamat;
+        $siswa->tgl_lahir = $request->tgl_lahir;
         $siswa->save();
         return redirect()->route('siswa.index')->with('success',
         'Data berhasil DiUpdate!');
@@ -122,7 +130,7 @@ class SiswaController extends Controller
         //
         $siswa = Siswa::findorFail($id);
         $siswa->delete();
-        return redirect()->route('siswa.index')->with('succes',
+        return redirect()->route('siswa.index')->with('success',
         'Data berhasil Dihapus!');
     }
 }

@@ -5,6 +5,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\WaliController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +38,11 @@ Route::resource('nilai', NilaiController::class);
 Route::get('/test-admin' , function(){
     return view('layouts.admin');
 });
+
+Route::get('/hallo' , function (){
+    return view('hallo');
+});
+
+
+Route::resource('wali', WaliController::class);
+
